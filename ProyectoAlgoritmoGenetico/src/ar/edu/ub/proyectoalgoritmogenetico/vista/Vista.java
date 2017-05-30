@@ -1,4 +1,4 @@
-package ar.edu.ub.proyectoalgorimogenetico.vista;
+package ar.edu.ub.proyectoalgoritmogenetico.vista;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -7,7 +7,7 @@ import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.UIManager;
 
-import ar.edu.ub.proyectoalgorimogenetico.controlador.AlgoritmoGeneticoControlador;
+import ar.edu.ub.proyectoalgoritmogenetico.controlador.AlgoritmoGeneticoControlador;
 
 public class Vista {
 	

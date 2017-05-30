@@ -1,4 +1,4 @@
-package ar.edu.ub.proyectoalgorimogenetico.controlador;
+package ar.edu.ub.proyectoalgoritmogenetico.controlador;
 
 public class MainControlador {
 
