@@ -1,4 +1,4 @@
-package ar.edu.ub.proyrctoalgoritmogenetico.modelo;
+package ar.edu.ub.proyectoalgoritmogenetico.modelo;
 
 import java.util.concurrent.ThreadLocalRandom;
 

@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import ar.edu.ub.proyectoalgorimogenetico.vista.Vista;
-import ar.edu.ub.proyrctoalgoritmogenetico.modelo.AlgoritmoGenetico;
+import ar.edu.ub.proyectoalgoritmogenetico.modelo.AlgoritmoGenetico;
 
 public class AlgoritmoGeneticoControlador implements ActionListener {
 	private Vista vista;
