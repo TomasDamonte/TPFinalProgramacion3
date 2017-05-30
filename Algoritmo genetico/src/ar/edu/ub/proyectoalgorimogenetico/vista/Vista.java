@@ -1,4 +1,4 @@
-package algoritmo.genetico;
+package ar.edu.ub.proyectoalgorimogenetico.vista;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -7,7 +7,10 @@ import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.UIManager;
 
-public class View {
+import ar.edu.ub.proyectoalgorimogenetico.controlador.AlgoritmoGeneticoControlador;
+
+public class Vista {
+	
 	private JFrame frame;
 	private JButton btnBuscar;
 	private JLabel lblCantidadDeIteraciones;
@@ -17,7 +20,7 @@ public class View {
 	private JTextArea ListaPoblacion;
 	private JTextArea clave;
 
-	public View(Controlador controlador) {
+	public Vista(AlgoritmoGeneticoControlador controlador) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 544, 486);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,7 +68,7 @@ public class View {
 	}
 	
 	public JTextArea getClave() {
-		return clave;
+		return this.clave;
 	}
 
 	public void setClave(JTextArea clave) {
@@ -73,7 +76,7 @@ public class View {
 	}
 
 	public JTextArea getListaPoblacion() {
-		return ListaPoblacion;
+		return this.ListaPoblacion;
 	}
 
 	public void setListaPoblacion(JTextArea listaPoblacion) {
@@ -81,16 +84,15 @@ public class View {
 	}
 
 	public JLabel getLblPoblacion() {
-		return lblPoblacion;
+		return this.lblPoblacion;
 	}
 
 	public void setLblPoblacion(JLabel lblPoblacion) {
 		this.lblPoblacion = lblPoblacion;
 	}
 
-
 	public JButton getBtnBuscar() {
-		return btnBuscar;
+		return this.btnBuscar;
 	}
 
 	public void setBtnBuscar(JButton btnBuscar) {
@@ -98,7 +100,7 @@ public class View {
 	}
 
 	public JLabel getLblCantidadDeIteraciones() {
-		return lblCantidadDeIteraciones;
+		return this.lblCantidadDeIteraciones;
 	}
 
 	public void setLblCantidadDeIteraciones(JLabel lblCantidadDeIteraciones) {
@@ -106,7 +108,7 @@ public class View {
 	}
 
 	public JLabel getLblNumeroIteraciones() {
-		return lblNumeroIteraciones;
+		return this.lblNumeroIteraciones;
 	}
 
 	public void setLblNumeroIteraciones(JLabel lblNumeroIteraciones) {
@@ -114,10 +116,11 @@ public class View {
 	}
 
 	public JLabel getLblCromosomaABuscar() {
-		return lblCromosomaABuscar;
+		return this.lblCromosomaABuscar;
 	}
 
 	public void setLblCromosomaABuscar(JLabel lblCromosomaABuscar) {
 		this.lblCromosomaABuscar = lblCromosomaABuscar;
 	}
+	
 }

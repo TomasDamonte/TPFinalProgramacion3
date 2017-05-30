@@ -1,4 +1,4 @@
-package algoritmo.genetico;
+package ar.edu.ub.proyrctoalgoritmogenetico.modelo;
 
 import java.sql.SQLException;
 
@@ -38,23 +38,23 @@ public class AlgoritmoGenetico {
 	}
 	
 	public void buscar(Cromosoma clave) throws SQLException {
-		//ManejadorDB db = new ManejadorDB();		
+		ManejadorDB db = new ManejadorDB();		
 		this.setCantidadGeneraciones(0);
 		Integer finessMaximo = (Cromosoma.tamañoCromosoma + 1)
 				* Cromosoma.tamañoCromosoma * 4 * Cromosoma.tamañoCromosoma * 4;
-		poblacion.evaluarPoblacion(clave);
-		while (poblacion.mayorFitness() < finessMaximo) {
-			poblacion.seleccionarParejas();
-			poblacion.cruzarParejas();
-			poblacion.mutar();
-			poblacion.evaluarPoblacion(clave);
+		this.getPoblacion().evaluarPoblacion(this.getClave());
+		while (this.getPoblacion().mayorFitness() < finessMaximo) {
+			this.getPoblacion().seleccionarParejas();
+			this.getPoblacion().cruzarParejas();
+			this.getPoblacion().mutar();
+			this.getPoblacion().evaluarPoblacion(this.getClave());
 			this.setCantidadGeneraciones(this.getCantidadGeneraciones() + 1);
-			System.out.println(poblacion.getPoblacionString());
+			System.out.println(this.getPoblacion().getPoblacionString());
 		}
 		System.out.println("Clave encontrada despues de "
 				+ this.getCantidadGeneraciones() + " generaciones.");
-		//db.borrarCromosomasBD();
-		//db.insertarCromosomasBD(poblacion);
+		db.borrarCromosomasBD();
+		db.insertarCromosomasBD(this.getPoblacion());
 	}
 
 }

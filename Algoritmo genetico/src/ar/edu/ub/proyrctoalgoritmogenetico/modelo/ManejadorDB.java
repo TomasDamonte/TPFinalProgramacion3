@@ -1,4 +1,4 @@
-package algoritmo.genetico;
+package ar.edu.ub.proyrctoalgoritmogenetico.modelo;
 
 import java.sql.*;
 

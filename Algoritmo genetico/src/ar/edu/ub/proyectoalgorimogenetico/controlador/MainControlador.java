@@ -1,12 +1,10 @@
-package algoritmo.genetico;
+package ar.edu.ub.proyectoalgorimogenetico.controlador;
 
-public class Program {
+public class MainControlador {
 
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) {		
 		@SuppressWarnings("unused")
-		Controlador controlador = new Controlador();
-		
+		AlgoritmoGeneticoControlador controlador = new AlgoritmoGeneticoControlador();		
 	}
 
 }
