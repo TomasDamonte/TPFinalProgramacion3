@@ -194,7 +194,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == this.getBtnBuscar()) {
-			AlgoritmoGeneticoControlador.buscar();
+			AlgoritmoGeneticoControlador.simular();
 		}	
 		if(e.getSource() == this.getRdbtnManual()) {
 			txtFieldManual.setEditable(true);

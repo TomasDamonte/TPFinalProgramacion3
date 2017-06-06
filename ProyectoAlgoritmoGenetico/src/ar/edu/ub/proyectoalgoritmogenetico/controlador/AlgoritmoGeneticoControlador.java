@@ -10,20 +10,19 @@ public class AlgoritmoGeneticoControlador {
 	private static Vista vista;
 	
 	public AlgoritmoGeneticoControlador() {
-//		vista = new Vista();
-		new VistaConfiguracion();
-//		vista.getClave().setText(clave.toString());
-//		vista.mostrar();
+	/*	vista = new Vista();		
+		vista.getClave().setText(clave.toString());
+		vista.mostrar();*/
 	}
 	
-	public static void buscar(){
+	public static void simular(){
 		try {
-			AlgoritmoGenetico algoritmoGenetico = new AlgoritmoGenetico();
+			AlgoritmoGenetico algoritmoGenetico = new AlgoritmoGenetico();			
 			Cromosoma clave = new Cromosoma();
 			algoritmoGenetico.setClave(clave);
 			algoritmoGenetico.buscar(algoritmoGenetico.getClave());
-			vista.getLblNumeroIteraciones().setText(algoritmoGenetico.getCantidadGeneraciones().toString());
-			vista.getListaPoblacion().setText(algoritmoGenetico.getPoblacion().getPoblacionString());
+//			vista.getLblNumeroIteraciones().setText(algoritmoGenetico.getCantidadGeneraciones().toString());
+//			vista.getListaPoblacion().setText(algoritmoGenetico.getPoblacion().getPoblacionString());
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}

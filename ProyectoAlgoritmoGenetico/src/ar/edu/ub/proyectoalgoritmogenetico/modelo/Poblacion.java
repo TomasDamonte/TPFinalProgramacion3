@@ -44,11 +44,9 @@ public class Poblacion {
 			c1 = this.getPoblacion().get(ThreadLocalRandom.current().nextInt(0,this.getTamaño()-1+1));
 			c2 = this.getPoblacion().get(ThreadLocalRandom.current().nextInt(0,this.getTamaño()-1+1));
 			if(c1.getFitness() > c2.getFitness())				
-				aux.add(c1);
-			//this.getPoblacion().set(i, c1);
+				aux.add(c1);			
 			else
-				aux.add(c2);
-			//this.getPoblacion().set(i, c2);
+				aux.add(c2);			
 		}
 		this.setPoblacion(aux);
 	}
