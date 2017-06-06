@@ -38,7 +38,7 @@ public class AlgoritmoGenetico {
 	}
 	
 	public void buscar(Cromosoma clave) throws SQLException {
-		ManejadorDB db = new ManejadorDB();		
+//		ManejadorDB db = new ManejadorDB();		
 		this.setCantidadGeneraciones(0);
 		Integer finessMaximo = (Cromosoma.tamañoCromosoma + 1)
 				* Cromosoma.tamañoCromosoma * 4 * Cromosoma.tamañoCromosoma * 4;
@@ -53,8 +53,7 @@ public class AlgoritmoGenetico {
 		}
 		System.out.println("Clave encontrada despues de "
 				+ this.getCantidadGeneraciones() + " generaciones.");
-		db.borrarCromosomasBD();
-		db.insertarCromosomasBD(this.getPoblacion());
+//		db.borrarCromosomasBD();
+//		db.insertarCromosomasBD(this.getPoblacion());
 	}
-
 }

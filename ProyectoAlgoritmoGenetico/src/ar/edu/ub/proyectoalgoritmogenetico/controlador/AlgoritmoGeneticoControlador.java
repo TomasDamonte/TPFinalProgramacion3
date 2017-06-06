@@ -1,32 +1,32 @@
 package ar.edu.ub.proyectoalgoritmogenetico.controlador;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
-import ar.edu.ub.proyectoalgoritmogenetico.vista.Vista;
-import ar.edu.ub.proyectoalgoritmogenetico.modelo.AlgoritmoGenetico;
+import ar.edu.ub.proyectoalgoritmogenetico.vista.*;
+import ar.edu.ub.proyectoalgoritmogenetico.modelo.*;
 
-public class AlgoritmoGeneticoControlador implements ActionListener {
-	private Vista vista;
-	AlgoritmoGenetico algen = new AlgoritmoGenetico();
+public class AlgoritmoGeneticoControlador {
+
+	private static Vista vista;
 	
 	public AlgoritmoGeneticoControlador() {
-		this.vista = new Vista(this);
-		vista.getClave().setText(algen.getClave().getHexadecimalString() + "\n" + algen.getClave().getBinarioString());
-		vista.mostrar();
+//		vista = new Vista();
+		new VistaConfiguracion();
+//		vista.getClave().setText(clave.toString());
+//		vista.mostrar();
 	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == vista.getBtnBuscar()) {
-			try {
-				algen.buscar(algen.getClave());
-				vista.getLblNumeroIteraciones().setText(algen.getCantidadGeneraciones().toString());
-				vista.getListaPoblacion().setText(algen.getPoblacion().getPoblacionString());
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-		}		
+	
+	public static void buscar(){
+		try {
+			AlgoritmoGenetico algoritmoGenetico = new AlgoritmoGenetico();
+			Cromosoma clave = new Cromosoma();
+			algoritmoGenetico.setClave(clave);
+			algoritmoGenetico.buscar(algoritmoGenetico.getClave());
+			vista.getLblNumeroIteraciones().setText(algoritmoGenetico.getCantidadGeneraciones().toString());
+			vista.getListaPoblacion().setText(algoritmoGenetico.getPoblacion().getPoblacionString());
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 	}
 	
 }

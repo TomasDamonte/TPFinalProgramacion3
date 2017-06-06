@@ -1,35 +1,31 @@
 package ar.edu.ub.proyectoalgoritmogenetico.vista;
 
-import javax.swing.JButton;
+import java.awt.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-import java.awt.Color;
 import javax.swing.UIManager;
 
-import ar.edu.ub.proyectoalgoritmogenetico.controlador.AlgoritmoGeneticoControlador;
-
-public class Vista {
+public class Vista extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JFrame frame;
-	private JButton btnBuscar;
 	private JLabel lblCantidadDeIteraciones;
 	private JLabel lblNumeroIteraciones;
 	private JLabel lblCromosomaABuscar;
 	private JLabel lblPoblacion;
 	private JTextArea ListaPoblacion;
 	private JTextArea clave;
-
-	public Vista(AlgoritmoGeneticoControlador controlador) {
+	
+	public Vista() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 544, 486);
+		frame.setBounds(500, 500, 500, 400);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-
-		btnBuscar = new JButton("buscar");
-		btnBuscar.setBounds(239, 393, 89, 23);
-		frame.getContentPane().add(btnBuscar);
-		btnBuscar.addActionListener(controlador);
 
 		lblCantidadDeIteraciones = new JLabel(
 				"Cromosoma encontrado en generacion:");
@@ -63,10 +59,6 @@ public class Vista {
 
 	}
 	
-	public void mostrar(){
-		frame.setVisible(true);
-	}
-	
 	public JTextArea getClave() {
 		return this.clave;
 	}
@@ -89,14 +81,6 @@ public class Vista {
 
 	public void setLblPoblacion(JLabel lblPoblacion) {
 		this.lblPoblacion = lblPoblacion;
-	}
-
-	public JButton getBtnBuscar() {
-		return this.btnBuscar;
-	}
-
-	public void setBtnBuscar(JButton btnBuscar) {
-		this.btnBuscar = btnBuscar;
 	}
 
 	public JLabel getLblCantidadDeIteraciones() {
@@ -123,4 +107,8 @@ public class Vista {
 		this.lblCromosomaABuscar = lblCromosomaABuscar;
 	}
 	
+	public void mostrar(){
+		this.setVisible(true);
+	}
+		
 }
