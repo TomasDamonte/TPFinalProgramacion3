@@ -30,8 +30,9 @@ public class VistaConfiguracion extends JFrame implements ActionListener {
 	
 	public VistaConfiguracion() {
 		getContentPane().setLayout(null);
-		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(500, 500);
+		this.setTitle("Configuración");		
 		
 		lblTamañoDePoblacion = new JLabel("Tama\u00F1o de poblacion:");
 		lblTamañoDePoblacion.setBounds(10, 11, 121, 23);

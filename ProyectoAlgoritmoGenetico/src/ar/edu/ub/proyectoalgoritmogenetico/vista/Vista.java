@@ -9,9 +9,6 @@ import javax.swing.UIManager;
 
 public class Vista extends JFrame {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JFrame frame;
 	private JLabel lblCantidadDeIteraciones;
@@ -22,11 +19,15 @@ public class Vista extends JFrame {
 	private JTextArea clave;
 	
 	public Vista() {
+		
 		frame = new JFrame();
 		frame.setBounds(500, 500, 500, 400);
+		frame.setLocation(150, 200);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-
+		frame.setSize(500, 500);
+		frame.setTitle("Resultado");
+		
 		lblCantidadDeIteraciones = new JLabel(
 				"Cromosoma encontrado en generacion:");
 		lblCantidadDeIteraciones.setBounds(10, 73, 276, 36);
@@ -56,7 +57,8 @@ public class Vista extends JFrame {
 		clave.setEditable(false);
 		clave.setBounds(183, 32, 196, 36);
 		frame.getContentPane().add(clave);
-
+		
+		frame.setVisible(true);
 	}
 	
 	public JTextArea getClave() {

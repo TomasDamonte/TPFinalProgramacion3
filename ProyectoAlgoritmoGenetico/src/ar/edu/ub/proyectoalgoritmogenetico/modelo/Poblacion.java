@@ -7,13 +7,23 @@ public class Poblacion {
 
 	private LinkedList<Cromosoma> poblacion;
 	private Integer tamaño;
+	private Integer cantidadGenesMutar;
 
-	public Poblacion(Integer tamaño) {
+	public Poblacion(Integer tamaño,Integer cantidadGenesMutar) {
+		this.setCantidadGenesMutar(cantidadGenesMutar);
 		this.setTamaño(tamaño);
 		this.setPoblacion(new LinkedList<Cromosoma>());
 		for(Integer i=0;i<this.getTamaño();i++){
 			this.agregarCromosoma();
 		}
+	}
+
+	public Integer getCantidadGenesMutar() {
+		return cantidadGenesMutar;
+	}
+
+	public void setCantidadGenesMutar(Integer cantidadGenesMutar) {
+		this.cantidadGenesMutar = cantidadGenesMutar;
 	}
 
 	public Integer getTamaño() {
@@ -59,7 +69,7 @@ public class Poblacion {
 		for(Integer i=0;i<this.getTamaño()-1;i++) {
 			c1 = this.getPoblacion().get(ThreadLocalRandom.current().nextInt(0,this.getTamaño()-1+1));
 			c2 = this.getPoblacion().get(ThreadLocalRandom.current().nextInt(0,this.getTamaño()-1+1));
-			punto = ThreadLocalRandom.current().nextInt(0,Cromosoma.tamañoCromosoma-1+1);
+			punto = ThreadLocalRandom.current().nextInt(0,Cromosoma.getTamañoCromosoma()-1+1);
 			for(Integer j=0;j<punto;j++){
 				c3.setPosicionHexadecimal(c1.getPosicionHexadecimal(j), j);
 				c3.setPosicionBinario(c1.getPosicionBinario(j), j);
@@ -76,15 +86,15 @@ public class Poblacion {
 	public void mutar() {
 		Cromosoma c = new Cromosoma();
 		Integer posC,posBit,pos;
-		for(Integer i=0;i<ThreadLocalRandom.current().nextInt(0,100+1);i++){
+		for(Integer i=0;i<this.getCantidadGenesMutar();i++){
 			posC = ThreadLocalRandom.current().nextInt(0,this.getTamaño()-1+1);
 			c = this.getPoblacion().get(posC);
-			for(Integer j=0;j<ThreadLocalRandom.current().nextInt(0,100+1);j++){
-				posBit = ThreadLocalRandom.current().nextInt(0,Cromosoma.tamañoCromosoma-1+1);
+			for(Integer j=0;j<this.getCantidadGenesMutar();j++){
+				posBit = ThreadLocalRandom.current().nextInt(0,Cromosoma.getTamañoCromosoma()-1+1);
 				pos = ThreadLocalRandom.current().nextInt(0,3+1);
 				c.setPosicionBinario(cambiarBit(c.getPosicionBinario(posBit),pos),posBit);
 			}
-			for(Integer j=0;j<Cromosoma.tamañoCromosoma;j++){
+			for(Integer j=0;j<Cromosoma.getTamañoCromosoma();j++){
 				c.setPosicionHexadecimal(Integer.toString(Integer.parseInt(c.getPosicionBinario(j),2),16).toUpperCase(), j);
 			}
 			this.getPoblacion().set(posC,c);
@@ -115,7 +125,7 @@ public class Poblacion {
 		for(Integer j=0;j<this.getTamaño();j++){
 			h=0;
 			b=0;
-			for(Integer i=0;i<Cromosoma.tamañoCromosoma;i++){			
+			for(Integer i=0;i<Cromosoma.getTamañoCromosoma();i++){			
 				if(clave.getPosicionHexadecimal(i).equals(this.getPoblacion().get(j).getPosicionHexadecimal(i))){
 					h++;
 				}
@@ -132,10 +142,10 @@ public class Poblacion {
 	public String getPoblacionString(){
 		String str = "";
 		for(Integer i=0;i<this.getTamaño();i++){
-			for(Integer j=0;j<Cromosoma.tamañoCromosoma;j++)
+			for(Integer j=0;j<Cromosoma.getTamañoCromosoma();j++)
 				str = str + this.getPoblacion().get(i).getPosicionHexadecimal(j) + " ";
 			str = str + "\n";
-			for(Integer j=0;j<Cromosoma.tamañoCromosoma;j++)
+			for(Integer j=0;j<Cromosoma.getTamañoCromosoma();j++)
 				str = str +  this.getPoblacion().get(i).getPosicionBinario(j) + " ";
 			str = str + "\n";
 		}
@@ -145,10 +155,10 @@ public class Poblacion {
 	public String toString() {
 		String str = "";
 		for(Integer i=0;i<this.getTamaño();i++){
-			for(Integer j=0;j<Cromosoma.tamañoCromosoma;j++)
+			for(Integer j=0;j<Cromosoma.getTamañoCromosoma();j++)
 				str = str + this.getPoblacion().get(i).getPosicionHexadecimal(j) + " ";
 			str = str + "\n";
-			for(Integer j=0;j<Cromosoma.tamañoCromosoma;j++)
+			for(Integer j=0;j<Cromosoma.getTamañoCromosoma();j++)
 				str = str +  this.getPoblacion().get(i).getPosicionBinario(j) + " ";
 			str = str + "\n";
 		}

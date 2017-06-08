@@ -8,11 +8,18 @@ public class AlgoritmoGenetico {
 	private Integer cantidadGeneraciones;
 	private Poblacion poblacion;
 
-	public AlgoritmoGenetico(){
+	public AlgoritmoGenetico(Integer tamañoPoblacion,Integer tamañoCromosoma,Integer cantidadGenesMutar){
+		Cromosoma.setTamañoCromosoma(tamañoCromosoma);
 		this.setClave( new Cromosoma());
-		this.setPoblacion(new Poblacion(5));
+		this.setPoblacion(new Poblacion(tamañoPoblacion,cantidadGenesMutar));
 	}
-	
+/*	
+	public AlgoritmoGenetico(Integer tamañoPoblacion,Integer tamañoCromosoma,Integer cantidadGenesMutar, String clave){
+		Cromosoma.setTamañoCromosoma(tamañoCromosoma);
+		this.setClave( new Cromosoma(clave));
+		this.setPoblacion(new Poblacion(tamañoPoblacion,cantidadGenesMutar));
+	}
+*/
 	public Poblacion getPoblacion() {
 		return this.poblacion;
 	}
@@ -37,11 +44,11 @@ public class AlgoritmoGenetico {
 		this.cantidadGeneraciones = cantidadGeneraciones;
 	}
 	
-	public void buscar(Cromosoma clave) throws SQLException {
+	public void buscar() throws SQLException {
 //		ManejadorDB db = new ManejadorDB();		
 		this.setCantidadGeneraciones(0);
-		Integer finessMaximo = (Cromosoma.tamañoCromosoma + 1)
-				* Cromosoma.tamañoCromosoma * 4 * Cromosoma.tamañoCromosoma * 4;
+		Integer finessMaximo = (Cromosoma.getTamañoCromosoma()+ 1)
+				* Cromosoma.getTamañoCromosoma() * 4 * Cromosoma.getTamañoCromosoma() * 4;
 		this.getPoblacion().evaluarPoblacion(this.getClave());
 		while (this.getPoblacion().mayorFitness() < finessMaximo) {
 			this.getPoblacion().seleccionarParejas();

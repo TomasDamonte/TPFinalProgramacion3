@@ -7,7 +7,7 @@ public class Cromosoma {
 	private String[] hexadecimal = new String[tamañoCromosoma];
 	private String[] binario = new String[tamañoCromosoma];
 	private Integer Fitness;
-	public static final Integer tamañoCromosoma = 2;
+	private static Integer tamañoCromosoma;
 	
 	public Cromosoma () {
 		Integer random;
@@ -18,11 +18,20 @@ public class Cromosoma {
 		}		
 	}
 	
-	public Cromosoma(String[] clave) {
-		this.setHexadecimal(clave);
+	public Cromosoma(String clave) {
+		String [] array = clave.split("");
+		this.setHexadecimal(array);
 		for(Integer i=0;i<tamañoCromosoma;i++) {
-			this.setPosicionBinario(String.format("%4s",Integer.toBinaryString(Integer.parseInt(clave[i], 16))).replace(' ','0'),i);
+			this.setPosicionBinario(String.format("%4s",Integer.toBinaryString(Integer.parseInt(array[i], 16))).replace(' ','0'),i);
 		}
+	}
+
+	public static Integer getTamañoCromosoma() {
+		return tamañoCromosoma;
+	}
+
+	public static void setTamañoCromosoma(Integer tamañoCromosoma) {
+		Cromosoma.tamañoCromosoma = tamañoCromosoma;
 	}
 
 	public String[] getHexadecimal() {
