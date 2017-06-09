@@ -6,8 +6,7 @@ public class MainControlador {
 
 	public static void main(String[] args) {		
 		
-		new VistaConfiguracion();
-		
+		new VistaConfiguracion();		
 	}
 
 }

@@ -22,4 +22,5 @@ public class ManejadorDB {
 		conn.close();
 		stmt.close();
 	}
+	
 }

@@ -18,8 +18,7 @@ public class Vista extends JFrame {
 	private JTextArea ListaPoblacion;
 	private JTextArea clave;
 	
-	public Vista() {
-		
+	public Vista() {		
 		frame = new JFrame();
 		frame.setBounds(500, 500, 500, 400);
 		frame.setLocation(150, 200);
@@ -74,7 +73,7 @@ public class Vista extends JFrame {
 	}
 
 	public void setListaPoblacion(JTextArea listaPoblacion) {
-		ListaPoblacion = listaPoblacion;
+		this.ListaPoblacion = listaPoblacion;
 	}
 
 	public JLabel getLblPoblacion() {
@@ -107,10 +106,6 @@ public class Vista extends JFrame {
 
 	public void setLblCromosomaABuscar(JLabel lblCromosomaABuscar) {
 		this.lblCromosomaABuscar = lblCromosomaABuscar;
-	}
-	
-	public void mostrar(){
-		this.setVisible(true);
-	}
+	}	
 		
 }

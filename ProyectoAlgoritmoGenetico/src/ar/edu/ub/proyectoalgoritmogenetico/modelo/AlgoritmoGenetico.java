@@ -8,18 +8,12 @@ public class AlgoritmoGenetico {
 	private Integer cantidadGeneraciones;
 	private Poblacion poblacion;
 
-	public AlgoritmoGenetico(Integer tamañoPoblacion,Integer tamañoCromosoma,Integer cantidadGenesMutar){
+	public AlgoritmoGenetico(Integer tamañoPoblacion, Integer tamañoCromosoma, Integer cantidadGenesMutar) {
 		Cromosoma.setTamañoCromosoma(tamañoCromosoma);
 		this.setClave( new Cromosoma());
 		this.setPoblacion(new Poblacion(tamañoPoblacion,cantidadGenesMutar));
 	}
-/*	
-	public AlgoritmoGenetico(Integer tamañoPoblacion,Integer tamañoCromosoma,Integer cantidadGenesMutar, String clave){
-		Cromosoma.setTamañoCromosoma(tamañoCromosoma);
-		this.setClave( new Cromosoma(clave));
-		this.setPoblacion(new Poblacion(tamañoPoblacion,cantidadGenesMutar));
-	}
-*/
+
 	public Poblacion getPoblacion() {
 		return this.poblacion;
 	}
@@ -63,4 +57,5 @@ public class AlgoritmoGenetico {
 //		db.borrarCromosomasBD();
 //		db.insertarCromosomasBD(this.getPoblacion());
 	}
+	
 }

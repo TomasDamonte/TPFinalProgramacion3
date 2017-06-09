@@ -93,4 +93,5 @@ public class Cromosoma {
 			str = str +  this.getPosicionBinario(i) + " ";
 		return str;
 	}
+	
 }
