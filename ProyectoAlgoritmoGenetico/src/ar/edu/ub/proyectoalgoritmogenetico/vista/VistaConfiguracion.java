@@ -2,6 +2,8 @@ package ar.edu.ub.proyectoalgoritmogenetico.vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -21,7 +23,7 @@ import java.awt.Font;
 
 import javax.swing.UIManager;
 
-public class VistaConfiguracion extends JFrame implements ActionListener {
+public class VistaConfiguracion extends JFrame implements ActionListener, KeyListener {
 
 	private static final long serialVersionUID = 1L;	
 	private JLabel lblTamañoDePoblacion;
@@ -46,91 +48,95 @@ public class VistaConfiguracion extends JFrame implements ActionListener {
 		this.setSize(600, 500);
 		this.setTitle("Configuración");		
 
-		lblTamañoDePoblacion = new JLabel("Cantidad de individuos:");
-		lblTamañoDePoblacion.setBounds(10, 11, 150, 23);
-		this.getContentPane().add(lblTamañoDePoblacion);
+		this.setLblTamañoDePoblacion(new JLabel("Cantidad de individuos:"));
+		this.getLblTamañoDePoblacion().setBounds(10, 11, 150, 23);
+		this.getContentPane().add(this.getLblTamañoDePoblacion());
 
-		lblTamañoDeCromosoma = new JLabel("Cantidad de genes:");
-		lblTamañoDeCromosoma.setBounds(10, 62, 150, 14);
-		this.getContentPane().add(lblTamañoDeCromosoma);
+		this.setLblTamañoDeCromosoma(new JLabel("Cantidad de genes:"));
+		this.getLblTamañoDeCromosoma().setBounds(10, 62, 150, 14);
+		this.getContentPane().add(this.getLblTamañoDeCromosoma());
 
-		lblCantidadDeGenes = new JLabel("Cantidad de genes a mutar:");
-		lblCantidadDeGenes.setBounds(10, 98, 158, 14);
-		this.getContentPane().add(lblCantidadDeGenes);
+		this.setLblCantidadDeGenes(new JLabel("Cantidad de genes a mutar:"));
+		this.getLblCantidadDeGenes().setBounds(10, 98, 158, 14);
+		this.getContentPane().add(this.getLblCantidadDeGenes());
 
-		lblClave = new JLabel("Clave:");
-		lblClave.setBounds(10, 148, 59, 14);
-		this.getContentPane().add(lblClave);
+		this.setLblClave(new JLabel("Clave:"));
+		this.getLblClave().setBounds(10, 148, 59, 14);
+		this.getContentPane().add(this.getLblClave());
 
 		ButtonGroup botonGrupo = new ButtonGroup();
 
-		rdbtnManual = new JRadioButton("Manual");
-		rdbtnManual.setBounds(32, 169, 80, 37);
-		rdbtnManual.addActionListener(this);
-		botonGrupo.add(rdbtnManual);
-		this.getContentPane().add(rdbtnManual);
+		this.setRdbtnManual(new JRadioButton("Manual"));
+		this.getRdbtnManual().setBounds(32, 169, 80, 37);
+		this.getRdbtnManual().addActionListener(this);
+		botonGrupo.add(this.getRdbtnManual());
+		this.getContentPane().add(this.getRdbtnManual());
 
-		rdbtnAutomatica = new JRadioButton("Automatica");
-		rdbtnAutomatica.setBounds(32, 202, 93, 30);
-		rdbtnAutomatica.setSelected(true);
-		rdbtnAutomatica.addActionListener(this);
-		botonGrupo.add(rdbtnAutomatica);
-		this.getContentPane().add(rdbtnAutomatica);
+		this.setRdbtnAutomatica(new JRadioButton("Automatica"));
+		this.getRdbtnAutomatica().setBounds(32, 202, 93, 30);
+		this.getRdbtnAutomatica().setSelected(true);
+		this.getRdbtnAutomatica().addActionListener(this);
+		botonGrupo.add(this.getRdbtnAutomatica());
+		this.getContentPane().add(this.getRdbtnAutomatica());
 
-		textFieldClave = new JTextField();
-		textFieldClave.setEditable(false);
-		textFieldClave.setBounds(113, 173, 200, 29);
-		this.getContentPane().add(textFieldClave);
-		textFieldClave.setColumns(10);
+		this.setTextFieldClave(new JTextField());
+		this.getTextFieldClave().setEditable(false);
+		this.getTextFieldClave().setBounds(113, 173, 200, 29);
+		this.getContentPane().add(this.getTextFieldClave());
+		this.getTextFieldClave().setColumns(10);
+		this.getTextFieldClave().addKeyListener(this);
 
-		btnBuscar = new JButton("Simular");
-		btnBuscar.setBounds(178, 270, 108, 23);
-		btnBuscar.addActionListener(this);		
-		this.getContentPane().add(btnBuscar);
+		this.setBtnBuscar(new JButton("Simular"));
+		this.getBtnBuscar().setBounds(178, 270, 108, 23);
+		this.getBtnBuscar().addActionListener(this);		
+		this.getContentPane().add(this.getBtnBuscar());
 
-		textFieldTamañoPoblacion = new JTextField();
-		textFieldTamañoPoblacion.setBounds(178, 12, 86, 22);
-		this.getContentPane().add(textFieldTamañoPoblacion);
-		textFieldTamañoPoblacion.setColumns(10);
+		this.setTextFieldTamañoPoblacion(new JTextField());
+		this.getTextFieldTamañoPoblacion().setBounds(178, 12, 86, 22);
+		this.getContentPane().add(this.getTextFieldTamañoPoblacion());
+		this.getTextFieldTamañoPoblacion().setColumns(10);
+		this.getTextFieldTamañoPoblacion().addKeyListener(this);
 
-		textFieldTamañoCromosoma = new JTextField();
-		textFieldTamañoCromosoma.setBounds(178, 58, 86, 23);
-		this.getContentPane().add(textFieldTamañoCromosoma);
-		textFieldTamañoCromosoma.setColumns(10);
+		this.setTextFieldTamañoCromosoma(new JTextField());
+		this.getTextFieldTamañoCromosoma().setBounds(178, 58, 86, 23);
+		this.getContentPane().add(this.getTextFieldTamañoCromosoma());
+		this.getTextFieldTamañoCromosoma().setColumns(10);
+		this.getTextFieldTamañoCromosoma().addKeyListener(this);
 
-		textFieldCantidadGenesMutar = new JTextField();
-		textFieldCantidadGenesMutar.setBounds(178, 95, 86, 23);
-		this.getContentPane().add(textFieldCantidadGenesMutar);
-		textFieldCantidadGenesMutar.setColumns(10);
+		this.setTextFieldCantidadGenesMutar(new JTextField());
+		this.getTextFieldCantidadGenesMutar().setBounds(178, 95, 86, 23);
+		this.getContentPane().add(this.getTextFieldCantidadGenesMutar());
+		this.getTextFieldCantidadGenesMutar().setColumns(10);
+		this.getTextFieldCantidadGenesMutar().addKeyListener(this);
 
-		lblErrorPoblacion = new JLabel("Este campo solo acepta enteros");
-		lblErrorPoblacion.setBounds(310, 15, 192, 19);
-		lblErrorPoblacion.setVisible(false);
-		lblErrorPoblacion.setForeground(Color.RED);
-		this.getContentPane().add(lblErrorPoblacion);
+		this.setLblErrorPoblacion(new JLabel("Este campo solo acepta enteros"));
+		this.getLblErrorPoblacion().setBounds(310, 15, 192, 19);
+		this.getLblErrorPoblacion().setVisible(false);
+		this.getLblErrorPoblacion().setForeground(Color.RED);
+		this.getContentPane().add(this.getLblErrorPoblacion());
 
-		lblErrorCromosoma = new JLabel("Este campo solo acepta enteros");
-		lblErrorCromosoma.setBounds(310, 62, 192, 14);
-		lblErrorCromosoma.setVisible(false);
-		lblErrorCromosoma.setForeground(Color.RED);
-		this.getContentPane().add(lblErrorCromosoma);
+		this.setLblErrorCromosoma(new JLabel("Este campo solo acepta enteros"));
+		this.getLblErrorCromosoma().setBounds(310, 62, 192, 14);
+		this.getLblErrorCromosoma().setVisible(false);
+		this.getLblErrorCromosoma().setForeground(Color.RED);
+		this.getContentPane().add(this.getLblErrorCromosoma());
 
-		lblErrorGenes = new JLabel("Este campo solo acepta enteros");
-		lblErrorGenes.setBounds(310, 98, 192, 23);
-		lblErrorGenes.setVisible(false);
-		lblErrorGenes.setForeground(Color.RED);
-		this.getContentPane().add(lblErrorGenes);
+		this.setLblErrorGenes(new JLabel("Este campo solo acepta enteros"));
+		this.getLblErrorGenes().setBounds(310, 98, 192, 23);
+		this.getLblErrorGenes().setVisible(false);
+		this.getLblErrorGenes().setForeground(Color.RED);
+		this.getContentPane().add(this.getLblErrorGenes());
 
 		this.setTextAreaErrorClave(new JTextArea());
 		this.getTextAreaErrorClave().setBackground(UIManager.getColor("ComboBox.disabledBackground"));
-		textAreaErrorClave.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		textAreaErrorClave.setText("Este campo solo acepta\r\nvalores hexadecimales");
-		textAreaErrorClave.setEditable(false);
-		textAreaErrorClave.setBounds(323, 169, 151, 37);
-		textAreaErrorClave.setForeground(Color.RED);
-		textAreaErrorClave.setVisible(false);
-		this.getContentPane().add(textAreaErrorClave);
-		
+		this.getTextAreaErrorClave().setFont(new Font("Tahoma", Font.PLAIN, 11));
+		this.getTextAreaErrorClave().setText("Este campo solo acepta\r\nvalores hexadecimales");
+		this.getTextAreaErrorClave().setEditable(false);
+		this.getTextAreaErrorClave().setBounds(323, 169, 151, 37);
+		this.getTextAreaErrorClave().setForeground(Color.RED);
+		this.getTextAreaErrorClave().setVisible(false);
+		this.getContentPane().add(this.getTextAreaErrorClave());
+
 		this.setVisible(true);
 	}
 
@@ -253,7 +259,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener {
 	public void setTextFieldCantidadGenesMutar(JTextField textFieldCantidadGenesMutar) {
 		this.textFieldCantidadGenesMutar = textFieldCantidadGenesMutar;
 	}
-		
+
 	private void resetearMensajesError() {
 		this.getLblErrorPoblacion().setVisible(false);
 		this.getLblErrorCromosoma().setVisible(false);
@@ -281,7 +287,35 @@ public class VistaConfiguracion extends JFrame implements ActionListener {
 		if(e.getSource() == this.getRdbtnManual()) 
 			textFieldClave.setEditable(true);
 		if(e.getSource() == this.getRdbtnAutomatica()) 
-			textFieldClave.setEditable(false);		
+			textFieldClave.setEditable(false);	
 	}
 
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if(this.getTextFieldCantidadGenesMutar().getText().length()>= 2) {  
+			e.consume();
+		}
+		if(this.getTextFieldTamañoCromosoma().getText().length()>= 2) {  
+			e.consume();
+		}
+		if(this.getTextFieldTamañoPoblacion().getText().length()>= 2) {  
+			e.consume();
+		}
+		if(this.getTextFieldClave().getText().length()>= 2) {  
+			e.consume();
+		}
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

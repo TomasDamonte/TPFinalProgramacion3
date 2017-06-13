@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import ar.edu.ub.proyectoalgoritmogenetico.util.Contexto;
 import ar.edu.ub.proyectoalgoritmogenetico.util.Validaciones;
 import ar.edu.ub.proyectoalgoritmogenetico.util.Utilidades;
-import ar.edu.ub.proyectoalgoritmogenetico.vista.*;
 import ar.edu.ub.proyectoalgoritmogenetico.modelo.*;
 
 public class AlgoritmoGeneticoControlador {
@@ -18,10 +17,10 @@ public class AlgoritmoGeneticoControlador {
 			else 
 				algoritmoGenetico.setClave(new Cromosoma(clave));
 			algoritmoGenetico.buscar();
-			Vista vista = new Vista();		
-			vista.getClave().setText(algoritmoGenetico.getClave().getHexadecimalString());			
-			vista.getLblNumeroIteraciones().setText(algoritmoGenetico.getCantidadGeneraciones().toString());
-			vista.getListaPoblacion().setText(algoritmoGenetico.getPoblacion().getPoblacionString());
+			Contexto.generateVista();		
+			Contexto.getVista().getClave().setText(algoritmoGenetico.getClave().getHexadecimalString());			
+			Contexto.getVista().getLblNumeroIteraciones().setText(algoritmoGenetico.getCantidadGeneraciones().toString());
+			Contexto.getVista().getListaPoblacion().setText(algoritmoGenetico.getPoblacion().getPoblacionString());
 			algoritmoGenetico.guardarEnDB();
 		} catch (SQLException e1) {			
 			System.out.println("Error al guardar base de datos: No se encontro la base de datos.");

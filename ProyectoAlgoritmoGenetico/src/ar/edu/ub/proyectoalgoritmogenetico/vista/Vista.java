@@ -19,47 +19,54 @@ public class Vista extends JFrame {
 	private JTextArea clave;
 	
 	public Vista() {		
-		frame = new JFrame();
-		frame.setBounds(500, 500, 500, 400);
-		frame.setLocation(150, 200);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
-		frame.setSize(500, 500);
-		frame.setTitle("Resultado");
+		this.setFrame(new JFrame());
+		this.getFrame().setBounds(500, 500, 500, 400);
+		this.getFrame().setLocation(150, 200);
+		this.getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.getFrame().getContentPane().setLayout(null);
+		this.getFrame().setSize(500, 500);
+		this.getFrame().setTitle("Resultado");
 		
-		lblCantidadDeIteraciones = new JLabel(
-				"Cromosoma encontrado en generacion:");
-		lblCantidadDeIteraciones.setBounds(10, 73, 276, 36);
-		frame.getContentPane().add(lblCantidadDeIteraciones);
+		this.setLblCantidadDeIteraciones(new JLabel("Cromosoma encontrado en generacion:"));
+		this.getLblCantidadDeIteraciones().setBounds(10, 73, 276, 36);
+		this.getFrame().getContentPane().add(this.getLblCantidadDeIteraciones());
 
-		lblNumeroIteraciones = new JLabel("");
-		lblNumeroIteraciones.setBounds(296, 84, 71, 14);
-		frame.getContentPane().add(lblNumeroIteraciones);
+		this.setLblNumeroIteraciones(new JLabel(""));
+		this.getLblNumeroIteraciones().setBounds(296, 84, 71, 14);
+		this.getFrame().getContentPane().add(this.getLblNumeroIteraciones());
 
-		lblCromosomaABuscar = new JLabel("Cromosoma a buscar:");
-		lblCromosomaABuscar.setBounds(10, 26, 145, 36);
-		frame.getContentPane().add(lblCromosomaABuscar);
+		this.setLblCromosomaABuscar(new JLabel("Cromosoma a buscar:"));
+		this.getLblCromosomaABuscar().setBounds(10, 26, 145, 36);
+		this.getFrame().getContentPane().add(this.getLblCromosomaABuscar());
 		
-		lblPoblacion = new JLabel("Ultima poblacion:");
-		lblPoblacion.setBounds(10, 144, 109, 51);
-		frame.getContentPane().add(lblPoblacion);
+		this.setLblPoblacion(new JLabel("Ultima poblacion:"));
+		this.getLblPoblacion().setBounds(10, 144, 109, 51);
+		this.getFrame().getContentPane().add(this.getLblPoblacion());
 		
-		ListaPoblacion = new JTextArea();
-		ListaPoblacion.setBackground(UIManager.getColor("Viewport.background"));
-		ListaPoblacion.setForeground(Color.BLACK);
-		ListaPoblacion.setEditable(false);
-		ListaPoblacion.setBounds(148, 157, 353, 204);
-		frame.getContentPane().add(ListaPoblacion);
+		this.setListaPoblacion(new JTextArea());
+		this.getListaPoblacion().setBackground(UIManager.getColor("Viewport.background"));
+		this.getListaPoblacion().setForeground(Color.BLACK);
+		this.getListaPoblacion().setEditable(false);
+		this.getListaPoblacion().setBounds(148, 157, 353, 204);
+		this.getFrame().getContentPane().add(this.getListaPoblacion());
 		
-		clave = new JTextArea();
-		clave.setBackground(UIManager.getColor("Viewport.background"));
-		clave.setEditable(false);
-		clave.setBounds(183, 32, 196, 36);
-		frame.getContentPane().add(clave);
+		this.setClave(new JTextArea());
+		this.getClave().setBackground(UIManager.getColor("Viewport.background"));
+		this.getClave().setEditable(false);
+		this.getClave().setBounds(183, 32, 196, 36);
+		this.getFrame().getContentPane().add(this.getClave());
 		
-		frame.setVisible(true);
+		this.getFrame().setVisible(true);
 	}
 	
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
 	public JTextArea getClave() {
 		return this.clave;
 	}
