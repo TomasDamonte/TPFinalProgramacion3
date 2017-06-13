@@ -22,7 +22,7 @@ import java.awt.Font;
 import javax.swing.UIManager;
 
 public class VistaConfiguracion extends JFrame implements ActionListener {
-	
+
 	private static final long serialVersionUID = 1L;	
 	private JLabel lblTamañoDePoblacion;
 	private JLabel lblTamañoDeCromosoma;
@@ -31,7 +31,6 @@ public class VistaConfiguracion extends JFrame implements ActionListener {
 	private JRadioButton rdbtnManual;
 	private JRadioButton rdbtnAutomatica;
 	private JButton btnBuscar;
-	private JButton btnValidarConfiguracion;
 	private JTextField textFieldTamañoPoblacion;
 	private JTextField textFieldTamañoCromosoma;
 	private JTextField textFieldCantidadGenesMutar;
@@ -40,90 +39,88 @@ public class VistaConfiguracion extends JFrame implements ActionListener {
 	private JLabel lblErrorCromosoma;
 	private JLabel lblErrorGenes;
 	private JTextArea textAreaErrorClave;
-	
+
 	public VistaConfiguracion() {
 		this.getContentPane().setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(600, 500);
 		this.setTitle("Configuración");		
-		
-		lblTamañoDePoblacion = new JLabel("Tama\u00F1o de poblacion:");
+
+		lblTamañoDePoblacion = new JLabel("Cantidad de individuos:");
 		lblTamañoDePoblacion.setBounds(10, 11, 150, 23);
-		getContentPane().add(lblTamañoDePoblacion);
-		
-		lblTamañoDeCromosoma = new JLabel("Tama\u00F1o de cromosoma:");
+		this.getContentPane().add(lblTamañoDePoblacion);
+
+		lblTamañoDeCromosoma = new JLabel("Cantidad de genes:");
 		lblTamañoDeCromosoma.setBounds(10, 62, 150, 14);
-		getContentPane().add(lblTamañoDeCromosoma);
-		
+		this.getContentPane().add(lblTamañoDeCromosoma);
+
 		lblCantidadDeGenes = new JLabel("Cantidad de genes a mutar:");
 		lblCantidadDeGenes.setBounds(10, 98, 158, 14);
-		getContentPane().add(lblCantidadDeGenes);
-		
+		this.getContentPane().add(lblCantidadDeGenes);
+
 		lblClave = new JLabel("Clave:");
 		lblClave.setBounds(10, 148, 59, 14);
-		getContentPane().add(lblClave);
-		
+		this.getContentPane().add(lblClave);
+
 		ButtonGroup botonGrupo = new ButtonGroup();
-		
+
 		rdbtnManual = new JRadioButton("Manual");
 		rdbtnManual.setBounds(32, 169, 80, 37);
 		rdbtnManual.addActionListener(this);
 		botonGrupo.add(rdbtnManual);
-		getContentPane().add(rdbtnManual);
-		
+		this.getContentPane().add(rdbtnManual);
+
 		rdbtnAutomatica = new JRadioButton("Automatica");
 		rdbtnAutomatica.setBounds(32, 202, 93, 30);
 		rdbtnAutomatica.setSelected(true);
 		rdbtnAutomatica.addActionListener(this);
 		botonGrupo.add(rdbtnAutomatica);
-		getContentPane().add(rdbtnAutomatica);
-		
+		this.getContentPane().add(rdbtnAutomatica);
+
 		textFieldClave = new JTextField();
 		textFieldClave.setEditable(false);
 		textFieldClave.setBounds(113, 173, 200, 29);
-		getContentPane().add(textFieldClave);
+		this.getContentPane().add(textFieldClave);
 		textFieldClave.setColumns(10);
-		
+
 		btnBuscar = new JButton("Simular");
 		btnBuscar.setBounds(178, 270, 108, 23);
-		btnBuscar.addActionListener(this);
-		btnBuscar.setVisible(false);
-		btnBuscar.setEnabled(false);
-		getContentPane().add(btnBuscar);
-		
+		btnBuscar.addActionListener(this);		
+		this.getContentPane().add(btnBuscar);
+
 		textFieldTamañoPoblacion = new JTextField();
 		textFieldTamañoPoblacion.setBounds(178, 12, 86, 22);
-		getContentPane().add(textFieldTamañoPoblacion);
+		this.getContentPane().add(textFieldTamañoPoblacion);
 		textFieldTamañoPoblacion.setColumns(10);
-		
+
 		textFieldTamañoCromosoma = new JTextField();
 		textFieldTamañoCromosoma.setBounds(178, 58, 86, 23);
-		getContentPane().add(textFieldTamañoCromosoma);
+		this.getContentPane().add(textFieldTamañoCromosoma);
 		textFieldTamañoCromosoma.setColumns(10);
-		
+
 		textFieldCantidadGenesMutar = new JTextField();
 		textFieldCantidadGenesMutar.setBounds(178, 95, 86, 23);
-		getContentPane().add(textFieldCantidadGenesMutar);
+		this.getContentPane().add(textFieldCantidadGenesMutar);
 		textFieldCantidadGenesMutar.setColumns(10);
-		
+
 		lblErrorPoblacion = new JLabel("Este campo solo acepta enteros");
 		lblErrorPoblacion.setBounds(310, 15, 192, 19);
 		lblErrorPoblacion.setVisible(false);
 		lblErrorPoblacion.setForeground(Color.RED);
-		getContentPane().add(lblErrorPoblacion);
-		
+		this.getContentPane().add(lblErrorPoblacion);
+
 		lblErrorCromosoma = new JLabel("Este campo solo acepta enteros");
 		lblErrorCromosoma.setBounds(310, 62, 192, 14);
 		lblErrorCromosoma.setVisible(false);
 		lblErrorCromosoma.setForeground(Color.RED);
-		getContentPane().add(lblErrorCromosoma);
-		
+		this.getContentPane().add(lblErrorCromosoma);
+
 		lblErrorGenes = new JLabel("Este campo solo acepta enteros");
 		lblErrorGenes.setBounds(310, 98, 192, 23);
 		lblErrorGenes.setVisible(false);
 		lblErrorGenes.setForeground(Color.RED);
-		getContentPane().add(lblErrorGenes);
-		
+		this.getContentPane().add(lblErrorGenes);
+
 		this.setTextAreaErrorClave(new JTextArea());
 		this.getTextAreaErrorClave().setBackground(UIManager.getColor("ComboBox.disabledBackground"));
 		textAreaErrorClave.setFont(new Font("Tahoma", Font.PLAIN, 11));
@@ -132,16 +129,11 @@ public class VistaConfiguracion extends JFrame implements ActionListener {
 		textAreaErrorClave.setBounds(323, 169, 151, 37);
 		textAreaErrorClave.setForeground(Color.RED);
 		textAreaErrorClave.setVisible(false);
-		getContentPane().add(textAreaErrorClave);
-		
-		btnValidarConfiguracion = new JButton("Validar configuraci\u00F3n");
-		btnValidarConfiguracion.setBounds(163, 231, 200, 23);
-		btnValidarConfiguracion.addActionListener(this);
-		getContentPane().add(btnValidarConfiguracion);
+		this.getContentPane().add(textAreaErrorClave);
 		
 		this.setVisible(true);
 	}
-	
+
 	public JLabel getLblErrorPoblacion() {
 		return this.lblErrorPoblacion;
 	}
@@ -261,27 +253,35 @@ public class VistaConfiguracion extends JFrame implements ActionListener {
 	public void setTextFieldCantidadGenesMutar(JTextField textFieldCantidadGenesMutar) {
 		this.textFieldCantidadGenesMutar = textFieldCantidadGenesMutar;
 	}
-
-	public JButton getBtnValidarConfiguracion() {
-		return this.btnValidarConfiguracion;
+		
+	private void resetearMensajesError() {
+		this.getLblErrorPoblacion().setVisible(false);
+		this.getLblErrorCromosoma().setVisible(false);
+		this.getLblErrorGenes().setVisible(false);
+		this.getTextAreaErrorClave().setVisible(false);		
 	}
 
-	public void setBtnValidarConfiguracion(JButton btnValidarConfiguracion) {
-		this.btnValidarConfiguracion = btnValidarConfiguracion;
-	}
-
-	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == this.getBtnValidarConfiguracion()) {
-			AlgoritmoGeneticoControlador.validarConfiguracion(this,this.getTextFieldTamañoPoblacion().getText(),this.getTextFieldTamañoCromosoma().getText(),this.getTextFieldCantidadGenesMutar().getText(),this.getTextFieldClave().getText());
+	public void actionPerformed(ActionEvent e) {			
+		if(e.getSource() == this.getBtnBuscar()) {
+			this.resetearMensajesError();
+			AlgoritmoGeneticoControlador.validarConfiguracion(this.getTextFieldTamañoPoblacion().getText(),
+					this.getTextFieldTamañoCromosoma().getText(),this.getTextFieldCantidadGenesMutar().getText(),
+					this.getTextFieldClave().getText(),this.getRdbtnManual().isSelected());
 			if (!(Boolean) Contexto.get(Validaciones.VALIDACION_ENTERO_TAMAÑO_POBLACION))
 				this.getLblErrorPoblacion().setVisible(Boolean.TRUE);
-		}		
-		if(e.getSource() == this.getBtnBuscar()) 
-			AlgoritmoGeneticoControlador.simular(this.getTextFieldTamañoPoblacion().getText(),this.getTextFieldTamañoCromosoma().getText(),this.getTextFieldCantidadGenesMutar().getText(),this.getTextFieldClave().getText());
+			if (!(Boolean) Contexto.get(Validaciones.VALIDACION_ENTERO_TAMAÑO_CROMOSOMA))
+				this.getLblErrorCromosoma().setVisible(Boolean.TRUE);
+			if (!(Boolean) Contexto.get(Validaciones.VALIDACION_ENTERO_GENES_A_MUTAR))
+				this.getLblErrorGenes().setVisible(Boolean.TRUE);
+			if (!(Boolean) Contexto.get(Validaciones.VALIDACION_HEXADECIMAL_CLAVE))
+				this.getTextAreaErrorClave().setVisible(Boolean.TRUE);
+			if ((Boolean) Contexto.get(Validaciones.VALIDACION_ENTERO_TAMAÑO_POBLACION) && (Boolean) Contexto.get(Validaciones.VALIDACION_ENTERO_TAMAÑO_CROMOSOMA) && (Boolean) Contexto.get(Validaciones.VALIDACION_ENTERO_GENES_A_MUTAR) && (Boolean) Contexto.get(Validaciones.VALIDACION_HEXADECIMAL_CLAVE))
+				AlgoritmoGeneticoControlador.simular(this.getTextFieldTamañoPoblacion().getText(),this.getTextFieldTamañoCromosoma().getText(),this.getTextFieldCantidadGenesMutar().getText(),this.getTextFieldClave().getText());
+		}
 		if(e.getSource() == this.getRdbtnManual()) 
 			textFieldClave.setEditable(true);
 		if(e.getSource() == this.getRdbtnAutomatica()) 
 			textFieldClave.setEditable(false);		
 	}
-	
+
 }

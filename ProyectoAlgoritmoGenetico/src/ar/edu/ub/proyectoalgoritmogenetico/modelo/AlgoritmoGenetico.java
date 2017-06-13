@@ -37,12 +37,12 @@ public class AlgoritmoGenetico {
 		this.cantidadGeneraciones = cantidadGeneraciones;
 	}
 	
-	public void buscar() throws SQLException {
-		ManejadorDB db = new ManejadorDB();		
+	public void buscar() {		
 		this.setCantidadGeneraciones(0);
 		Integer finessMaximo = (Cromosoma.getTamañoCromosoma()+ 1)
 				* Cromosoma.getTamañoCromosoma() * 4 * Cromosoma.getTamañoCromosoma() * 4;
 		this.getPoblacion().evaluarPoblacion(this.getClave());
+		System.out.println(this.getPoblacion());
 		while (this.getPoblacion().mayorFitness() < finessMaximo) {
 			this.getPoblacion().seleccionarParejas();
 			this.getPoblacion().cruzarParejas();
@@ -52,7 +52,11 @@ public class AlgoritmoGenetico {
 			System.out.println(this.getPoblacion());
 		}
 		System.out.println("Clave encontrada despues de "
-				+ this.getCantidadGeneraciones() + " generaciones.");
+				+ this.getCantidadGeneraciones() + " generaciones.");		
+	}
+	
+	public void guardarEnDB() throws SQLException {
+		ManejadorDB db = new ManejadorDB();		
 		db.borrarCromosomasBD();
 		db.insertarCromosomasBD(this.getPoblacion());
 	}
