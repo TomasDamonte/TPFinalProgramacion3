@@ -139,7 +139,7 @@ public class Poblacion {
 		}
 	}
 	
-	public String getPoblacionString(){
+	public String getPoblacionString() {
 		String str = "";
 		for(Integer i=0;i<this.getTamaño();i++){
 			for(Integer j=0;j<Cromosoma.getTamañoCromosoma();j++)

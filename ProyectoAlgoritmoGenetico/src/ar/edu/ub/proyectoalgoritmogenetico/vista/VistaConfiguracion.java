@@ -11,10 +11,14 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import ar.edu.ub.proyectoalgoritmogenetico.controlador.AlgoritmoGeneticoControlador;
+import ar.edu.ub.proyectoalgoritmogenetico.util.Contexto;
+import ar.edu.ub.proyectoalgoritmogenetico.util.Validaciones;
+
 import javax.swing.JTextArea;
 
 import java.awt.Color;
 import java.awt.Font;
+
 import javax.swing.UIManager;
 
 public class VistaConfiguracion extends JFrame implements ActionListener {
@@ -38,7 +42,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener {
 	private JTextArea textAreaErrorClave;
 	
 	public VistaConfiguracion() {
-		getContentPane().setLayout(null);
+		this.getContentPane().setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(600, 500);
 		this.setTitle("Configuración");		
@@ -120,8 +124,8 @@ public class VistaConfiguracion extends JFrame implements ActionListener {
 		lblErrorGenes.setForeground(Color.RED);
 		getContentPane().add(lblErrorGenes);
 		
-		textAreaErrorClave = new JTextArea();
-		textAreaErrorClave.setBackground(UIManager.getColor("ComboBox.disabledBackground"));
+		this.setTextAreaErrorClave(new JTextArea());
+		this.getTextAreaErrorClave().setBackground(UIManager.getColor("ComboBox.disabledBackground"));
 		textAreaErrorClave.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		textAreaErrorClave.setText("Este campo solo acepta\r\nvalores hexadecimales");
 		textAreaErrorClave.setEditable(false);
@@ -267,8 +271,11 @@ public class VistaConfiguracion extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource() == this.getBtnValidarConfiguracion()) 
+		if(e.getSource() == this.getBtnValidarConfiguracion()) {
 			AlgoritmoGeneticoControlador.validarConfiguracion(this,this.getTextFieldTamañoPoblacion().getText(),this.getTextFieldTamañoCromosoma().getText(),this.getTextFieldCantidadGenesMutar().getText(),this.getTextFieldClave().getText());
+			if (!(Boolean) Contexto.get(Validaciones.VALIDACION_ENTERO_TAMAÑO_POBLACION))
+				this.getLblErrorPoblacion().setVisible(Boolean.TRUE);
+		}		
 		if(e.getSource() == this.getBtnBuscar()) 
 			AlgoritmoGeneticoControlador.simular(this.getTextFieldTamañoPoblacion().getText(),this.getTextFieldTamañoCromosoma().getText(),this.getTextFieldCantidadGenesMutar().getText(),this.getTextFieldClave().getText());
 		if(e.getSource() == this.getRdbtnManual()) 

@@ -2,6 +2,9 @@ package ar.edu.ub.proyectoalgoritmogenetico.controlador;
 
 import java.sql.SQLException;
 
+import ar.edu.ub.proyectoalgoritmogenetico.util.Contexto;
+import ar.edu.ub.proyectoalgoritmogenetico.util.Validaciones;
+import ar.edu.ub.proyectoalgoritmogenetico.util.Utilidades;
 import ar.edu.ub.proyectoalgoritmogenetico.vista.*;
 import ar.edu.ub.proyectoalgoritmogenetico.modelo.*;
 
@@ -25,50 +28,35 @@ public class AlgoritmoGeneticoControlador {
 	}
 
 	public static void validarConfiguracion(VistaConfiguracion vistaConfiguracion, String tamañoPoblacion, String tamañoCromosoma, String cantidadGenesMutar, String clave) {
+		resetearMensajesError(vistaConfiguracion);				
+		Contexto.put(Validaciones.VALIDACION_ENTERO_TAMAÑO_POBLACION, Utilidades.esEntero(tamañoPoblacion) ? Boolean.TRUE: Boolean.FALSE);
+		if(!Utilidades.esEntero(tamañoCromosoma))
+			vistaConfiguracion.getLblErrorCromosoma().setVisible(true);
+		if(!Utilidades.esEntero(cantidadGenesMutar))
+			vistaConfiguracion.getLblErrorGenes().setVisible(true);
+		if(vistaConfiguracion.getRdbtnManual().isSelected() && !Utilidades.esHexadecimal(clave))			
+			vistaConfiguracion.getTextAreaErrorClave().setVisible(true);
+		if(vistaConfiguracion.getRdbtnManual().isSelected()) {
+			if(Utilidades.esEntero(tamañoPoblacion) && Utilidades.esEntero(tamañoCromosoma) && Utilidades.esEntero(cantidadGenesMutar) && Utilidades.esHexadecimal(clave)){
+				vistaConfiguracion.getBtnBuscar().setVisible(true);
+				vistaConfiguracion.getBtnBuscar().setEnabled(true);
+			}
+		}
+		else {
+			if(Utilidades.esEntero(tamañoPoblacion) && Utilidades.esEntero(tamañoCromosoma) && Utilidades.esEntero(cantidadGenesMutar)) {
+				vistaConfiguracion.getBtnBuscar().setVisible(true);
+				vistaConfiguracion.getBtnBuscar().setEnabled(true);	
+			}
+		}		
+	}
+	
+	private static void resetearMensajesError(VistaConfiguracion vistaConfiguracion) {		
 		vistaConfiguracion.getLblErrorPoblacion().setVisible(false);
 		vistaConfiguracion.getLblErrorCromosoma().setVisible(false);
 		vistaConfiguracion.getLblErrorGenes().setVisible(false);
 		vistaConfiguracion.getTextAreaErrorClave().setVisible(false);
 		vistaConfiguracion.getBtnBuscar().setVisible(false);
 		vistaConfiguracion.getBtnBuscar().setEnabled(false);		
-		if(!esEntero(tamañoPoblacion))
-			vistaConfiguracion.getLblErrorPoblacion().setVisible(true);
-		if(!esEntero(tamañoCromosoma))
-			vistaConfiguracion.getLblErrorCromosoma().setVisible(true);
-		if(!esEntero(cantidadGenesMutar))
-			vistaConfiguracion.getLblErrorGenes().setVisible(true);
-		if(vistaConfiguracion.getRdbtnManual().isSelected() && !esHexadecimal(clave))			
-			vistaConfiguracion.getTextAreaErrorClave().setVisible(true);
-		if(vistaConfiguracion.getRdbtnManual().isSelected()) {
-			if(esEntero(tamañoPoblacion) && esEntero(tamañoCromosoma) && esEntero(cantidadGenesMutar) && esHexadecimal(clave)){
-				vistaConfiguracion.getBtnBuscar().setVisible(true);
-				vistaConfiguracion.getBtnBuscar().setEnabled(true);
-			}
-		}
-		else {
-			if(esEntero(tamañoPoblacion) && esEntero(tamañoCromosoma) && esEntero(cantidadGenesMutar)) {
-				vistaConfiguracion.getBtnBuscar().setVisible(true);
-				vistaConfiguracion.getBtnBuscar().setEnabled(true);	
-			}
-		}		
-	}
-
-	private static Boolean esEntero(String string) {
-		try {
-			Integer.parseInt(string);			
-		} catch(Exception e) {
-			return Boolean.FALSE;
-		}
-		return Boolean.TRUE;
-	}
-
-	private static Boolean esHexadecimal(String string) {
-		try {
-			Long.parseLong(string,16);
-		} catch(Exception e) {
-			return Boolean.FALSE;
-		}
-		return Boolean.TRUE;
 	}
 
 }

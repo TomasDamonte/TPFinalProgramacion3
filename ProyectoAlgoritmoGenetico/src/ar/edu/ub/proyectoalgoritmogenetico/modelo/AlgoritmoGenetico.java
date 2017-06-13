@@ -10,7 +10,6 @@ public class AlgoritmoGenetico {
 
 	public AlgoritmoGenetico(Integer tamañoPoblacion, Integer tamañoCromosoma, Integer cantidadGenesMutar) {
 		Cromosoma.setTamañoCromosoma(tamañoCromosoma);
-		this.setClave( new Cromosoma());
 		this.setPoblacion(new Poblacion(tamañoPoblacion,cantidadGenesMutar));
 	}
 
@@ -39,7 +38,7 @@ public class AlgoritmoGenetico {
 	}
 	
 	public void buscar() throws SQLException {
-//		ManejadorDB db = new ManejadorDB();		
+		ManejadorDB db = new ManejadorDB();		
 		this.setCantidadGeneraciones(0);
 		Integer finessMaximo = (Cromosoma.getTamañoCromosoma()+ 1)
 				* Cromosoma.getTamañoCromosoma() * 4 * Cromosoma.getTamañoCromosoma() * 4;
@@ -50,12 +49,12 @@ public class AlgoritmoGenetico {
 			this.getPoblacion().mutar();
 			this.getPoblacion().evaluarPoblacion(this.getClave());
 			this.setCantidadGeneraciones(this.getCantidadGeneraciones() + 1);
-			System.out.println(this.getPoblacion().getPoblacionString());
+			System.out.println(this.getPoblacion());
 		}
 		System.out.println("Clave encontrada despues de "
 				+ this.getCantidadGeneraciones() + " generaciones.");
-//		db.borrarCromosomasBD();
-//		db.insertarCromosomasBD(this.getPoblacion());
+		db.borrarCromosomasBD();
+		db.insertarCromosomasBD(this.getPoblacion());
 	}
 	
 }
