@@ -318,17 +318,16 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 	@Override
 	public void keyTyped(KeyEvent e) {
 		char c = e.getKeyChar();
-		if (this.getTextFieldCantidadGenesMutar().getText().length()>= 2  && (c != KeyEvent.VK_BACK_SPACE)) {
-			e.consume();  // ignore event
-		
+		if (this.getTextFieldCantidadGenesMutar().getText().length()>= 2  && (c != KeyEvent.VK_BACK_SPACE) && this.getTextFieldCantidadGenesMutar().isFocusOwner()) {
+			e.consume();  // ignore event		
 		}
-		else if (this.getTextFieldTamañoCromosoma().getText().length()>= 2  && (c != KeyEvent.VK_BACK_SPACE)) {
-			e.consume();  // ignore event
-		}
-		else if (this.getTextFieldTamañoPoblacion().getText().length()>= 2  && (c != KeyEvent.VK_BACK_SPACE)) {
+		if (this.getTextFieldTamañoCromosoma().getText().length()>= 2  && (c != KeyEvent.VK_BACK_SPACE) && this.getTextFieldTamañoCromosoma().isFocusOwner()) {
 			e.consume();  // ignore event
 		}
-		else if (this.getTextFieldClave().getText().length()>= 6  && (c != KeyEvent.VK_BACK_SPACE)) {
+		if (this.getTextFieldTamañoPoblacion().getText().length()>= 2  && (c != KeyEvent.VK_BACK_SPACE) && this.getTextFieldTamañoPoblacion().isFocusOwner()) {
+			e.consume();  // ignore event
+		}
+		if (this.getTextFieldClave().getText().length()>= 6  && (c != KeyEvent.VK_BACK_SPACE) && this.getTextFieldClave().isFocusOwner()) {
 			e.consume();  // ignore event
 		}
 
