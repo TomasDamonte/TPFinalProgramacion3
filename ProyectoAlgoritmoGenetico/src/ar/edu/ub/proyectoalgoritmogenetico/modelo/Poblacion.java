@@ -139,6 +139,15 @@ public class Poblacion {
 		}
 	}
 	
+	public String[][] getPoblacionMatriz() {
+		String[][] matriz = new String[this.getTamaño()][2];
+		for(Integer i=0;i<this.getTamaño();i++){
+			matriz[i][0] = this.getPoblacion().get(i).getBinarioString();
+			matriz[i][1] = this.getPoblacion().get(i).getHexadecimalString();
+		}
+		return matriz;
+	}
+	
 	public String getPoblacionString() {
 		String str = "";
 		for(Integer i=0;i<this.getTamaño();i++){

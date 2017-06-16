@@ -34,9 +34,8 @@ public class Contexto {
 		return Contexto.getInstance().get(clave);
 	}
 	
-	public static void generateVista(){
+	public static void generateVista() {
 		Contexto.setVista(new Vista());
-	}
-	
+	}	
 
 }

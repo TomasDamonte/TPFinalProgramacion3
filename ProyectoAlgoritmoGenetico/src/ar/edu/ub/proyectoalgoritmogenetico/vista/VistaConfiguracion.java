@@ -22,6 +22,9 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.UIManager;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.SwingConstants;
 
 public class VistaConfiguracion extends JFrame implements ActionListener, KeyListener {
 
@@ -43,6 +46,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 	private JTextArea textAreaErrorClave;
 
 	public VistaConfiguracion() {
+		getContentPane().setBackground(UIManager.getColor("Button.background"));
 		this.getContentPane().setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(600, 500);
@@ -72,7 +76,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 		botonGrupo.add(this.getRdbtnManual());
 		this.getContentPane().add(this.getRdbtnManual());
 
-		this.setRdbtnAutomatica(new JRadioButton("Automatica"));
+		this.setRdbtnAutomatica(new JRadioButton("Autom\u00E1tica"));
 		this.getRdbtnAutomatica().setBounds(32, 202, 93, 30);
 		this.getRdbtnAutomatica().setSelected(true);
 		this.getRdbtnAutomatica().addActionListener(this);
@@ -129,7 +133,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 
 		this.setTextAreaErrorClave(new JTextArea());
 		this.getTextAreaErrorClave().setBackground(UIManager.getColor("ComboBox.disabledBackground"));
-		this.getTextAreaErrorClave().setFont(new Font("Tahoma", Font.PLAIN, 11));
+		this.getTextAreaErrorClave().setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 		this.getTextAreaErrorClave().setText("Este campo solo acepta\r\nvalores hexadecimales");
 		this.getTextAreaErrorClave().setEditable(false);
 		this.getTextAreaErrorClave().setBounds(323, 169, 151, 37);
@@ -146,6 +150,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 
 	public void setLblErrorPoblacion(JLabel lblErrorPoblacion) {
 		this.lblErrorPoblacion = lblErrorPoblacion;
+		lblErrorPoblacion.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 	}
 
 	public JLabel getLblErrorCromosoma() {
@@ -154,6 +159,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 
 	public void setLblErrorCromosoma(JLabel lblErrorCromosoma) {
 		this.lblErrorCromosoma = lblErrorCromosoma;
+		lblErrorCromosoma.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 	}
 
 	public JLabel getLblErrorGenes() {
@@ -162,6 +168,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 
 	public void setLblErrorGenes(JLabel lblErrorGenes) {
 		this.lblErrorGenes = lblErrorGenes;
+		lblErrorGenes.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 11));
 	}
 
 	public JTextArea getTextAreaErrorClave() {
@@ -178,6 +185,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 
 	public void setTextFieldClave(JTextField txtFieldManual) {
 		this.textFieldClave = txtFieldManual;
+		textFieldClave.setHorizontalAlignment(SwingConstants.RIGHT);
 	}
 
 	public JLabel getLblTamañoDePoblacion() {
@@ -186,6 +194,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 
 	public void setLblTamañoDePoblacion(JLabel lblTamañoDePoblacion) {
 		this.lblTamañoDePoblacion = lblTamañoDePoblacion;
+		lblTamañoDePoblacion.setToolTipText("Cantidad de cromosomas de la poblaci\u00F3n");
 	}
 
 	public JLabel getLblTamañoDeCromosoma() {
@@ -194,6 +203,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 
 	public void setLblTamañoDeCromosoma(JLabel lblTamañoDeCromosoma) {
 		this.lblTamañoDeCromosoma = lblTamañoDeCromosoma;
+		lblTamañoDeCromosoma.setToolTipText("Cantidad de caracteres hexadecimales de cada cromosoma");
 	}
 
 	public JLabel getLblCantidadDeGenes() {
@@ -202,6 +212,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 
 	public void setLblCantidadDeGenes(JLabel lblCantidadDeGenes) {
 		this.lblCantidadDeGenes = lblCantidadDeGenes;
+		lblCantidadDeGenes.setToolTipText("Cantidad de cromosomas y genes a mutar en cada generaci\u00F3n");
 	}
 
 	public JLabel getLblClave() {
@@ -226,6 +237,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 
 	public void setRdbtnAutomatica(JRadioButton rdbtnAutomatica) {
 		this.rdbtnAutomatica = rdbtnAutomatica;
+		rdbtnAutomatica.setToolTipText("Clave generada al alzar por el programa");
 	}
 
 	public JButton getBtnBuscar() {
@@ -234,6 +246,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 
 	public void setBtnBuscar(JButton btnBuscar) {
 		this.btnBuscar = btnBuscar;
+		btnBuscar.setFont(new Font("Tahoma", Font.BOLD, 11));
 	}
 
 	public JTextField getTextFieldTamañoPoblacion() {
@@ -242,6 +255,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 
 	public void setTextFieldTamañoPoblacion(JTextField textFieldTamañoPoblacion) {
 		this.textFieldTamañoPoblacion = textFieldTamañoPoblacion;
+		textFieldTamañoPoblacion.setHorizontalAlignment(SwingConstants.RIGHT);
 	}
 
 	public JTextField getTextFieldTamañoCromosoma() {
@@ -250,6 +264,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 
 	public void setTextFieldTamañoCromosoma(JTextField textFieldTamañoCromosoma) {
 		this.textFieldTamañoCromosoma = textFieldTamañoCromosoma;
+		textFieldTamañoCromosoma.setHorizontalAlignment(SwingConstants.RIGHT);
 	}
 
 	public JTextField getTextFieldCantidadGenesMutar() {
@@ -258,6 +273,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 
 	public void setTextFieldCantidadGenesMutar(JTextField textFieldCantidadGenesMutar) {
 		this.textFieldCantidadGenesMutar = textFieldCantidadGenesMutar;
+		textFieldCantidadGenesMutar.setHorizontalAlignment(SwingConstants.RIGHT);
 	}
 
 	private void resetearMensajesError() {
@@ -290,32 +306,33 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 			textFieldClave.setEditable(false);	
 	}
 
-	@Override
 	public void keyPressed(KeyEvent e) {
-		if(this.getTextFieldCantidadGenesMutar().getText().length()>= 2) {  
-			e.consume();
-		}
-		if(this.getTextFieldTamañoCromosoma().getText().length()>= 2) {  
-			e.consume();
-		}
-		if(this.getTextFieldTamañoPoblacion().getText().length()>= 2) {  
-			e.consume();
-		}
-		if(this.getTextFieldClave().getText().length()>= 2) {  
-			e.consume();
-		}
-		
+
+
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-		// TODO Auto-generated method stub
+		char c = e.getKeyChar();
+		if (this.getTextFieldCantidadGenesMutar().getText().length()>= 2  && (c != KeyEvent.VK_BACK_SPACE)) {
+			e.consume();  // ignore event
 		
+		}
+		else if (this.getTextFieldTamañoCromosoma().getText().length()>= 2  && (c != KeyEvent.VK_BACK_SPACE)) {
+			e.consume();  // ignore event
+		}
+		else if (this.getTextFieldTamañoPoblacion().getText().length()>= 2  && (c != KeyEvent.VK_BACK_SPACE)) {
+			e.consume();  // ignore event
+		}
+		else if (this.getTextFieldClave().getText().length()>= 6  && (c != KeyEvent.VK_BACK_SPACE)) {
+			e.consume();  // ignore event
+		}
+
 	}
 }

@@ -20,7 +20,8 @@ public class AlgoritmoGeneticoControlador {
 			Contexto.generateVista();		
 			Contexto.getVista().getClave().setText(algoritmoGenetico.getClave().getHexadecimalString());			
 			Contexto.getVista().getLblNumeroIteraciones().setText(algoritmoGenetico.getCantidadGeneraciones().toString());
-			Contexto.getVista().getListaPoblacion().setText(algoritmoGenetico.getPoblacion().getPoblacionString());
+	//		Contexto.getVista().getListaPoblacion().setText(algoritmoGenetico.getPoblacion().getPoblacionString());
+			Contexto.getVista().generarTabla(algoritmoGenetico.getPoblacion().getPoblacionMatriz());
 			algoritmoGenetico.guardarEnDB();
 		} catch (SQLException e1) {			
 			System.out.println("Error al guardar base de datos: No se encontro la base de datos.");
