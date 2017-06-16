@@ -22,8 +22,6 @@ import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.UIManager;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 import javax.swing.SwingConstants;
 
 public class VistaConfiguracion extends JFrame implements ActionListener, KeyListener {
@@ -46,27 +44,27 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 	private JTextArea textAreaErrorClave;
 
 	public VistaConfiguracion() {
-		getContentPane().setBackground(UIManager.getColor("Button.background"));
-		this.getContentPane().setLayout(null);
+		this.setBackground(UIManager.getColor("Button.background"));
+		this.setLayout(null);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(600, 500);
 		this.setTitle("Configuración");		
 
 		this.setLblTamañoDePoblacion(new JLabel("Cantidad de individuos:"));
 		this.getLblTamañoDePoblacion().setBounds(10, 11, 150, 23);
-		this.getContentPane().add(this.getLblTamañoDePoblacion());
+		this.add(this.getLblTamañoDePoblacion());
 
 		this.setLblTamañoDeCromosoma(new JLabel("Cantidad de genes:"));
 		this.getLblTamañoDeCromosoma().setBounds(10, 62, 150, 14);
-		this.getContentPane().add(this.getLblTamañoDeCromosoma());
+		this.add(this.getLblTamañoDeCromosoma());
 
 		this.setLblCantidadDeGenes(new JLabel("Cantidad de genes a mutar:"));
 		this.getLblCantidadDeGenes().setBounds(10, 98, 158, 14);
-		this.getContentPane().add(this.getLblCantidadDeGenes());
+		this.add(this.getLblCantidadDeGenes());
 
 		this.setLblClave(new JLabel("Clave:"));
 		this.getLblClave().setBounds(10, 148, 59, 14);
-		this.getContentPane().add(this.getLblClave());
+		this.add(this.getLblClave());
 
 		ButtonGroup botonGrupo = new ButtonGroup();
 
@@ -74,14 +72,14 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 		this.getRdbtnManual().setBounds(32, 169, 80, 37);
 		this.getRdbtnManual().addActionListener(this);
 		botonGrupo.add(this.getRdbtnManual());
-		this.getContentPane().add(this.getRdbtnManual());
+		this.add(this.getRdbtnManual());
 
 		this.setRdbtnAutomatica(new JRadioButton("Autom\u00E1tica"));
 		this.getRdbtnAutomatica().setBounds(32, 202, 93, 30);
 		this.getRdbtnAutomatica().setSelected(true);
 		this.getRdbtnAutomatica().addActionListener(this);
 		botonGrupo.add(this.getRdbtnAutomatica());
-		this.getContentPane().add(this.getRdbtnAutomatica());
+		this.add(this.getRdbtnAutomatica());
 
 		this.setTextFieldClave(new JTextField());
 		this.getTextFieldClave().setEditable(false);
@@ -93,7 +91,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 		this.setBtnBuscar(new JButton("Simular"));
 		this.getBtnBuscar().setBounds(178, 270, 108, 23);
 		this.getBtnBuscar().addActionListener(this);		
-		this.getContentPane().add(this.getBtnBuscar());
+		this.add(this.getBtnBuscar());
 
 		this.setTextFieldTamañoPoblacion(new JTextField());
 		this.getTextFieldTamañoPoblacion().setBounds(178, 12, 86, 22);
@@ -117,19 +115,19 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 		this.getLblErrorPoblacion().setBounds(310, 15, 192, 19);
 		this.getLblErrorPoblacion().setVisible(false);
 		this.getLblErrorPoblacion().setForeground(Color.RED);
-		this.getContentPane().add(this.getLblErrorPoblacion());
+		this.add(this.getLblErrorPoblacion());
 
 		this.setLblErrorCromosoma(new JLabel("Este campo solo acepta enteros"));
 		this.getLblErrorCromosoma().setBounds(310, 62, 192, 14);
 		this.getLblErrorCromosoma().setVisible(false);
 		this.getLblErrorCromosoma().setForeground(Color.RED);
-		this.getContentPane().add(this.getLblErrorCromosoma());
+		this.add(this.getLblErrorCromosoma());
 
 		this.setLblErrorGenes(new JLabel("Este campo solo acepta enteros"));
 		this.getLblErrorGenes().setBounds(310, 98, 192, 23);
 		this.getLblErrorGenes().setVisible(false);
 		this.getLblErrorGenes().setForeground(Color.RED);
-		this.getContentPane().add(this.getLblErrorGenes());
+		this.add(this.getLblErrorGenes());
 
 		this.setTextAreaErrorClave(new JTextArea());
 		this.getTextAreaErrorClave().setBackground(UIManager.getColor("ComboBox.disabledBackground"));
@@ -139,7 +137,7 @@ public class VistaConfiguracion extends JFrame implements ActionListener, KeyLis
 		this.getTextAreaErrorClave().setBounds(323, 169, 151, 37);
 		this.getTextAreaErrorClave().setForeground(Color.RED);
 		this.getTextAreaErrorClave().setVisible(false);
-		this.getContentPane().add(this.getTextAreaErrorClave());
+		this.add(this.getTextAreaErrorClave());
 
 		this.setVisible(true);
 	}
